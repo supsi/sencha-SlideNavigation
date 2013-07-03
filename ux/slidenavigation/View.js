@@ -344,7 +344,7 @@ Ext.define('Ext.ux.slidenavigation.View', {
         if (parent) {
 
             // Make sure that the button is placed on the correct side of the toolbar
-            layout = parent.getLayout();
+            var layout = parent.getLayout();
             if (layout && Ext.isFunction(layout.setPack)) {
                 layout.setPack(listPosition);
             }
@@ -792,7 +792,7 @@ Ext.define('Ext.ux.slidenavigation.View', {
         if (containerSlideDelay > -1) {
             container.element.on({
                 drag: function(e, node, opts, eOpts) {
-                    deltaX = e.absDeltaX;
+                    var deltaX = e.absDeltaX,
                     deltaY = e.absDeltaY;
 
                     // This essentally acts as a vertical 'scroll-lock'.  If the user drags more
@@ -806,7 +806,7 @@ Ext.define('Ext.ux.slidenavigation.View', {
                     // ``deltaX`` is large enough, enable horizontal dragging
                     if (deltaX > containerSlideDelay && !container.dragAllowed && !container.dragAllowedForced) {
                         if (!container.dragAllowed) {
-                            scrollParent = me.container.getActiveItem().down('component[scrollable]');
+                            var scrollParent = me.container.getActiveItem().down('component[scrollable]');
                             if (scrollParent) {
                                 var scrollable              = scrollParent.getScrollable(),
                                 scroller                = scrollable.getScroller();
@@ -828,7 +828,7 @@ Ext.define('Ext.ux.slidenavigation.View', {
                 dragend: function() {
                     if (container.dragAllowed) {
                         // Re-enable scrolling on the child element
-                        scrollParent = me.container.getActiveItem().down('component[scrollable]');
+                        var scrollParent = me.container.getActiveItem().down('component[scrollable]');
                         if (scrollParent) {
                             var scrollable              = scrollParent.getScrollable(),
                             scroller                = scrollable.getScroller();
